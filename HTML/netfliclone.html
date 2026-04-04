@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Netflix Clone</title>
+</head>
+
+<body style="background-color:black; color:white; font-family:sans-serif;">
+
+<!-- Navbar -->
+<div style="display:flex; justify-content:space-between; padding:20px; background:black;">
+  <h1 style="color:red;">NETFLIX</h1>
+
+  <input 
+    type="text" 
+    id="search" 
+    placeholder="Search..." 
+    style="padding:8px; border-radius:5px;">
+</div>
+<div id="banner" style="
+  height:400px; 
+  background-size:cover; 
+  background-position:center; 
+  display:flex; 
+  align-items:flex-end; 
+  padding:30px;
+  position:relative;
+">
+
+  <div>
+    <h1 id="banner-title"></h1>
+
+    <button id="playBtn" style="
+      padding:10px 20px; 
+      margin-right:10px; 
+      background:white; 
+      border:none; 
+      cursor:pointer;">
+      ▶ Play
+    </button>
+
+    <button style="
+      padding:10px 20px; 
+      background:gray; 
+      color:white; 
+      border:none; 
+      cursor:pointer;">
+      ℹ More Info
+    </button>
+  </div>
+
+</div>
+
+<h2>Trending</h2>
+<div id="trending" style="display:flex; gap:15px; overflow-x:auto;"></div>
+
+<h2>Top Rated</h2>
+<div id="topRated" style="display:flex; gap:15px; overflow-x:auto;"></div>
+
+<h2>Action</h2>
+<div id="action" style="display:flex; gap:15px; overflow-x:auto;"></div>
+
+<script src="script.js"></script>
+<div id="trailerModal" style="
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+">
+
+  <iframe id="trailerVideo" width="800" height="450"></iframe>
+
+</div>
+
+</body>
+</html>
