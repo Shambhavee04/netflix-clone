@@ -49,6 +49,34 @@ app.get("/movies/action", async (req, res) => {
     res.status(500).json({ error: "Error fetching action movies" });
   }
 });
+// 🎬 Movie Details
+app.get("/movies/:id", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${req.params.id}?api_key=${process.env.API_KEY}`
+    );
+
+    res.json(response.data);
+
+  } catch (error) {
+    console.log("ERROR:", error.response?.data || error.message);
+    res.status(500).json({ error: "Error fetching movie details" });
+  }
+});
+// 🎥 Movie Trailer
+app.get("/movies/:id/trailer", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${req.params.id}/videos?api_key=${process.env.API_KEY}`
+    );
+
+    res.json(response.data);
+
+  } catch (error) {
+    console.log("ERROR:", error.response?.data || error.message);
+    res.status(500).json({ error: "Error fetching trailer" });
+  }
+});
 
 // Run server
 app.listen(5002, () => console.log("Server running on port 5002"));

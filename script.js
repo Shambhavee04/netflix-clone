@@ -1,50 +1,64 @@
+const API = "http://localhost:5002";
+
 let currentMovie = null;
 
-// 🔥 TRENDING
-fetch("http://localhost:5002/movies/trending")
+// 🔥 TRENDING (Banner + Row)
+fetch(`${API}/movies/trending`)
   .then(res => res.json())
   .then(data => {
+console.log("DATA:", data);
+    const banner = document.getElementById("banner");
+    const title = document.getElementById("banner-title");
     const container = document.getElementById("trending");
 
-    // 🎬 Banner (first movie)
-    const firstMovie = data.find(movie => movie.backdrop_path);
-    if (firstMovie) {
-      currentMovie = firstMovie;
+    // 🎬 Banner movie
+    const movie = data[0];
 
-      const banner = document.getElementById("banner");
-      const title = document.getElementById("banner-title");
+    if (movie) {
+      currentMovie = movie;
 
       banner.style.backgroundImage =
-        "url(https://image.tmdb.org/t/p/original" + firstMovie.backdrop_path + ")";
-      title.innerText = firstMovie.title;
+        `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`;
+
+      title.textContent = movie.title;
+      document.getElementById("banner-desc").textContent =
+  movie.overview?.slice(0, 150) + "...";
     }
 
+    // 🎞️ Row movies
     data.forEach(movie => {
-      const img = document.createElement("img");
-      img.src = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-      img.style.width = "150px";
-      img.style.cursor = "pointer";
+      if (!movie.poster_path) return;
 
-      // ✅ CLICK → DETAILS PAGE
+      const img = document.createElement("img");
+      img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+
+      img.classList.add("row-poster");
+
       img.onclick = () => {
         window.location.href = `movie.html?id=${movie.id}`;
       };
 
       container.appendChild(img);
     });
-  });
+
+  })
+  .catch(err => console.log("Trending error:", err));
+
 
 // 🔥 TOP RATED
-fetch("http://localhost:5002/movies/top-rated")
+fetch(`${API}/movies/top-rated`)
   .then(res => res.json())
   .then(data => {
+
     const container = document.getElementById("topRated");
 
     data.forEach(movie => {
+      if (!movie.poster_path) return;
+
       const img = document.createElement("img");
-      img.src = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-      img.style.width = "150px";
-      img.style.cursor = "pointer";
+      img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+
+      img.classList.add("row-poster");
 
       img.onclick = () => {
         window.location.href = `movie.html?id=${movie.id}`;
@@ -52,19 +66,25 @@ fetch("http://localhost:5002/movies/top-rated")
 
       container.appendChild(img);
     });
-  });
+
+  })
+  .catch(err => console.log("Top Rated error:", err));
+
 
 // 🔥 ACTION
-fetch("http://localhost:5002/movies/action")
+fetch(`${API}/movies/action`)
   .then(res => res.json())
   .then(data => {
+
     const container = document.getElementById("action");
 
     data.forEach(movie => {
+      if (!movie.poster_path) return;
+
       const img = document.createElement("img");
-      img.src = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-      img.style.width = "150px";
-      img.style.cursor = "pointer";
+      img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+
+      img.classList.add("row-poster");
 
       img.onclick = () => {
         window.location.href = `movie.html?id=${movie.id}`;
@@ -72,9 +92,41 @@ fetch("http://localhost:5002/movies/action")
 
       container.appendChild(img);
     });
-  });
-  document.getElementById("playBtn").onclick = () => {
-  if (currentMovie) {
+
+  })
+  .catch(err => console.log("Action error:", err));
+
+
+// 🎬 PLAY BUTTON (Banner)
+const btn = document.getElementById("playBtn");
+const infoBtn = document.getElementById("infoBtn");
+
+// ✅ Info button
+if (infoBtn) {
+  infoBtn.addEventListener("click", () => {
+
+    console.log("Info clicked:", currentMovie);
+
+    if (!currentMovie) {
+      alert("Movie not loaded ❌");
+      return;
+    }
+
     window.location.href = `movie.html?id=${currentMovie.id}`;
-  }
-};
+  });
+}
+
+// ✅ Play button (separate!)
+if (btn) {
+  btn.addEventListener("click", () => {
+
+    console.log("Play clicked:", currentMovie);
+
+    if (!currentMovie) {
+      alert("Movie not loaded ❌");
+      return;
+    }
+
+    window.location.href = `player.html?id=${currentMovie.id}`;
+  });
+}

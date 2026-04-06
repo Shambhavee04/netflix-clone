@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Netflix Player</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body style="background:black; color:white; margin:0;">
+
+  <!-- Top Bar -->
+  <div style="padding:15px;">
+    <button onclick="goBack()" style="padding:10px; cursor:pointer;">
+      ⬅ Back
+    </button>
+  </div>
+
+  <!-- Video Section -->
+  <div style="display:flex; justify-content:center; align-items:center;">
+    <div id="video-container"></div>
+  </div>
+
+  <!-- Movie Title -->
+  <h2 id="movie-title" style="text-align:center;"></h2>
+
+  <script src="player.js"></script>
+</body>
+</html>
