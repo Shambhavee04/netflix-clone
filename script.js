@@ -1,9 +1,9 @@
-const API = "http://localhost:5002";
+const BASE_URL = "https://netflix-backend-jpo5.onrender.com";
 
 let currentMovie = null;
 
 // 🔥 TRENDING (Banner + Row)
-fetch(`${API}/movies/trending`)
+fetch(`${BASE_URL}/movies/trending`)
   .then(res => res.json())
   .then(data => {
 console.log("DATA:", data);
@@ -46,7 +46,7 @@ console.log("DATA:", data);
 
 
 // 🔥 TOP RATED
-fetch(`${API}/movies/top-rated`)
+fetch(`${BASE_URL}/movies/top-rated`)
   .then(res => res.json())
   .then(data => {
 
@@ -72,7 +72,7 @@ fetch(`${API}/movies/top-rated`)
 
 
 // 🔥 ACTION
-fetch(`${API}/movies/action`)
+fetch(`${BASE_URL}/movies/action`)
   .then(res => res.json())
   .then(data => {
 

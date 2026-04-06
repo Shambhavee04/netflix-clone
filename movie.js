@@ -1,4 +1,4 @@
-const API = "http://localhost:5002";
+const BASE_URL = "https://netflix-backend-jpo5.onrender.com";
 
 // 🔥 GET MOVIE ID FROM URL
 const params = new URLSearchParams(window.location.search);
@@ -7,7 +7,7 @@ const movieId = params.get("id");
 console.log("Movie ID:", movieId);
 
 // 🎬 FETCH MOVIE DETAILS
-fetch(`${API}/movies/${movieId}`)
+fetch(`${BASE_URL}/movies/${movieId}`)
   .then(res => res.json())
   .then(movie => {
 
@@ -23,7 +23,7 @@ fetch(`${API}/movies/${movieId}`)
 
 
 // 🎥 FETCH TRAILER
-fetch(`${API}/movies/${movieId}/trailer`)
+fetch(`${BASE_URL}/movies/${movieId}/trailer`)
   .then(res => res.json())
   .then(data => {
 

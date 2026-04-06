@@ -1,37 +1,36 @@
-# 🎬 Netflix Clone
+# 🎬 Netflix Clone Web App
 
 ## 📌 Overview
 
-This is a **Netflix Clone project** built using HTML, CSS, JavaScript, and Node.js.
-It displays movies dynamically using an API and mimics the Netflix UI.
+A full-stack Netflix-inspired web application that dynamically displays movies using real-time data from TMDB API. The project replicates key Netflix features such as banners, categories, movie details, and trailer playback.
 
 ---
 
 ## 🚀 Features
 
-* 🎥 Trending Movies
-* ⭐ Top Rated Movies
-* 🎬 Action Movies Section
-* 🖼️ Dynamic Banner
-* ▶️ Movie Click Functionality
-* 🌐 Backend API Integration
+* 🎥 Browse **Trending, Top Rated, and Action Movies**
+* 🖼️ Dynamic **Banner Section**
+* 🔍 **Search functionality**
+* ▶️ **Play button** to watch trailers on a separate player page
+* ℹ️ **More Info page** with movie details
+* 🌐 Backend API integration using TMDB
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
+### Frontend
 
 * HTML
 * CSS
 * JavaScript
 
-**Backend:**
+### Backend
 
 * Node.js
 * Express.js
 
-**API:**
+### API
 
 * TMDB (The Movie Database)
 
@@ -39,59 +38,88 @@ It displays movies dynamically using an API and mimics the Netflix UI.
 
 ## 📂 Project Structure
 
-Netflix-Clone/
+```
+netflix-clone/
 │
 ├── HTML/
 │   ├── index.html
-│   ├── netfliclone.html
+│   ├── movie.html
+│   ├── player.html
 │   ├── script.js
-│   ├── server.js
-│   ├── package.json
+│   ├── player.js
 │
-├── node_modules/
-└── README.md
+├── server.js
+├── package.json
+├── README.md
+```
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### 1. Clone the repo
+1. Clone the repository
 
+```
 git clone https://github.com/your-username/netflix-clone.git
+```
 
-### 2. Install dependencies
+2. Install dependencies
 
+```
 npm install
+```
 
-### 3. Run server
+3. Add your TMDB API key in `.env`
 
+```
+API_KEY=your_api_key_here
+```
+
+4. Run the server
+
+```
 node server.js
+```
+
+5. Open in browser
+
+```
+http://localhost:3000
+```
 
 ---
 
-## ▶️ How to Use
+## 🌐 Live Demo
 
-* Open `index.html` in browser
-* Make sure backend is running
-* Browse movies and click to view details
+👉 https://your-netlify-link.netlify.app
 
 ---
 
-## ⚠️ Known Issues
+## ⚠️ Notes
 
-* Backend must be running for data
-* Some movies may not load due to API
+* Backend must be running for API requests
+* Some movies may not have trailers available
 
 ---
 
 ## 🔧 Future Improvements
 
-* Add login/signup
-* Improve UI
-* Add video streaming
+* 🔐 User authentication (Login/Signup)
+* 🎨 Enhanced UI (Netflix-level design)
+* 📱 Mobile responsiveness
+* 📺 Full video streaming experience
 
 ---
 
-## ⭐ Show some support
+## 💡 Learnings
+
+* API integration and async JavaScript
+* Full-stack routing (frontend + backend)
+* Dynamic UI rendering
+* Project structuring and deployment
+
+---
+
+## ⭐ Show Your Support
 
 If you like this project, give it a ⭐ on GitHub!

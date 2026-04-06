@@ -1,9 +1,10 @@
+const BASE_URL = "https://netflix-backend-jpo5.onrender.com";
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
 
 async function loadPlayer() {
   try {
-    const res = await fetch(`/movie/${movieId}/videos`);
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/videos`)
     const data = await res.json();
 
     const trailer = data.results.find(
